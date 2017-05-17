@@ -1,0 +1,10 @@
+c:\Users\Васёк\documents\visual studio 2017\Projects\noteApp\databaseClassLib\obj\Debug\databaseClassLib.csprojResolveAssemblyReference.cache
+c:\Users\Васёк\documents\visual studio 2017\Projects\noteApp\databaseClassLib\bin\Debug\databaseClassLib.dll.config
+c:\Users\Васёк\documents\visual studio 2017\Projects\noteApp\databaseClassLib\bin\Debug\databaseClassLib.dll
+c:\Users\Васёк\documents\visual studio 2017\Projects\noteApp\databaseClassLib\bin\Debug\databaseClassLib.pdb
+c:\Users\Васёк\documents\visual studio 2017\Projects\noteApp\databaseClassLib\bin\Debug\EntityFramework.dll
+c:\Users\Васёк\documents\visual studio 2017\Projects\noteApp\databaseClassLib\bin\Debug\EntityFramework.SqlServer.dll
+c:\Users\Васёк\documents\visual studio 2017\Projects\noteApp\databaseClassLib\bin\Debug\EntityFramework.xml
+c:\Users\Васёк\documents\visual studio 2017\Projects\noteApp\databaseClassLib\bin\Debug\EntityFramework.SqlServer.xml
+c:\Users\Васёк\documents\visual studio 2017\Projects\noteApp\databaseClassLib\obj\Debug\databaseClassLib.dll
+c:\Users\Васёк\documents\visual studio 2017\Projects\noteApp\databaseClassLib\obj\Debug\databaseClassLib.pdb

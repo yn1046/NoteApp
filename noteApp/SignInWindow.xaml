@@ -1,0 +1,25 @@
+﻿<Window x:Class="noteApp.SignInWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:noteApp"
+        mc:Ignorable="d"
+        Title="Log in" Height="220" Width="309" ResizeMode="CanMinimize">
+    <Grid>
+        <Label Content="Login" HorizontalAlignment="Left" Margin="56,38,0,0" VerticalAlignment="Top" FontWeight="Bold" />
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="114,42,0,0" VerticalAlignment="Top" Width="158" Text="{Binding Path=Model.Login}">
+            <TextBox.InputBindings>
+                <KeyBinding Key="Enter" Command="{Binding EnterCommand}" CommandParameter="{Binding ElementName=password}" />
+            </TextBox.InputBindings>
+        </TextBox>
+        <Label Content="Password" HorizontalAlignment="Left" Margin="35,80,0,0" VerticalAlignment="Top" FontWeight="Bold" />
+        <PasswordBox HorizontalAlignment="Left" Height="23" Margin="114,83,0,0" VerticalAlignment="Top" Width="158" Name="password">
+            <PasswordBox.InputBindings>
+                <KeyBinding Key="Enter" Command="{Binding EnterCommand}" CommandParameter="{Binding ElementName=password}" />
+            </PasswordBox.InputBindings>
+        </PasswordBox>
+        <Button Content="Enter" HorizontalAlignment="Left" Margin="114,132,0,0" VerticalAlignment="Top" Width="75" Command="{Binding EnterCommand}" CommandParameter="{Binding ElementName=password}" />
+        <Button Content="Register" HorizontalAlignment="Left" Margin="197,132,0,0" VerticalAlignment="Top" Width="75" Command="{Binding RegisterCommand}" />
+    </Grid>
+</Window>
