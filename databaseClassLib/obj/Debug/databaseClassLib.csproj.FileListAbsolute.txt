@@ -8,3 +8,13 @@ c:\Users\Васёк\documents\visual studio 2017\Projects\noteApp\databaseClassL
 c:\Users\Васёк\documents\visual studio 2017\Projects\noteApp\databaseClassLib\bin\Debug\EntityFramework.SqlServer.xml
 c:\Users\Васёк\documents\visual studio 2017\Projects\noteApp\databaseClassLib\obj\Debug\databaseClassLib.dll
 c:\Users\Васёк\documents\visual studio 2017\Projects\noteApp\databaseClassLib\obj\Debug\databaseClassLib.pdb
+C:\Users\YOBA\Desktop\NoteApp-master\databaseClassLib\bin\Debug\databaseClassLib.dll.config
+C:\Users\YOBA\Desktop\NoteApp-master\databaseClassLib\bin\Debug\databaseClassLib.dll
+C:\Users\YOBA\Desktop\NoteApp-master\databaseClassLib\bin\Debug\databaseClassLib.pdb
+C:\Users\YOBA\Desktop\NoteApp-master\databaseClassLib\bin\Debug\EntityFramework.dll
+C:\Users\YOBA\Desktop\NoteApp-master\databaseClassLib\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\YOBA\Desktop\NoteApp-master\databaseClassLib\bin\Debug\EntityFramework.xml
+C:\Users\YOBA\Desktop\NoteApp-master\databaseClassLib\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\YOBA\Desktop\NoteApp-master\databaseClassLib\obj\Debug\databaseClassLib.csprojResolveAssemblyReference.cache
+C:\Users\YOBA\Desktop\NoteApp-master\databaseClassLib\obj\Debug\databaseClassLib.dll
+C:\Users\YOBA\Desktop\NoteApp-master\databaseClassLib\obj\Debug\databaseClassLib.pdb

@@ -23,6 +23,8 @@ namespace noteApp.ViewModels
 
         public User CurrentUser { get; set; }
 
+        public bool IfResaved { get; set; }
+
         private Note selectedNote;
         public Note SelectedNote
         {
@@ -33,7 +35,8 @@ namespace noteApp.ViewModels
             set
             {
                 selectedNote = value;
-                Select();
+                if (!IfResaved) Select();
+                else IfResaved = false;
                 OnPropertyChanged(nameof(SelectedNote));
                 OnPropertyChanged(nameof(IfCanSave));
             }
@@ -88,6 +91,7 @@ namespace noteApp.ViewModels
             CurrentUser = user;
             SaveCommand = new DelegateCommand(DoSave);
             NewCommand = new DelegateCommand(CreateNew);
+            IfResaved = false;
             LoadNotes();
         }
 
@@ -137,6 +141,7 @@ namespace noteApp.ViewModels
             }
             else
             {
+                IfResaved = true;
                 using (var db = new UserDbContext())
                 {
                     var note = db.Notes.FirstOrDefault(n => n.Id == selectedNote.Id);

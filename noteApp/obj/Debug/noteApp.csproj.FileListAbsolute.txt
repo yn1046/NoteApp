@@ -23,3 +23,28 @@ c:\users\васёк\documents\visual studio 2017\Projects\noteApp\noteApp\bin\De
 c:\users\васёк\documents\visual studio 2017\Projects\noteApp\noteApp\bin\Debug\EntityFramework.SqlServer.xml
 c:\users\васёк\documents\visual studio 2017\Projects\noteApp\noteApp\obj\Debug\SignUpWindow.g.cs
 c:\users\васёк\documents\visual studio 2017\Projects\noteApp\noteApp\obj\Debug\SignUpWindow.baml
+C:\Users\YOBA\Desktop\NoteApp-master\noteApp\bin\Debug\noteApp.exe.config
+C:\Users\YOBA\Desktop\NoteApp-master\noteApp\bin\Debug\noteApp.exe
+C:\Users\YOBA\Desktop\NoteApp-master\noteApp\bin\Debug\noteApp.pdb
+C:\Users\YOBA\Desktop\NoteApp-master\noteApp\bin\Debug\databaseClassLib.dll
+C:\Users\YOBA\Desktop\NoteApp-master\noteApp\bin\Debug\EntityFramework.dll
+C:\Users\YOBA\Desktop\NoteApp-master\noteApp\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\YOBA\Desktop\NoteApp-master\noteApp\bin\Debug\databaseClassLib.pdb
+C:\Users\YOBA\Desktop\NoteApp-master\noteApp\bin\Debug\databaseClassLib.dll.config
+C:\Users\YOBA\Desktop\NoteApp-master\noteApp\bin\Debug\EntityFramework.xml
+C:\Users\YOBA\Desktop\NoteApp-master\noteApp\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\YOBA\Desktop\NoteApp-master\noteApp\obj\Debug\noteApp.csprojResolveAssemblyReference.cache
+C:\Users\YOBA\Desktop\NoteApp-master\noteApp\obj\Debug\MainWindow.g.cs
+C:\Users\YOBA\Desktop\NoteApp-master\noteApp\obj\Debug\SignInWindow.g.cs
+C:\Users\YOBA\Desktop\NoteApp-master\noteApp\obj\Debug\SignUpWindow.g.cs
+C:\Users\YOBA\Desktop\NoteApp-master\noteApp\obj\Debug\App.g.cs
+C:\Users\YOBA\Desktop\NoteApp-master\noteApp\obj\Debug\noteApp_MarkupCompile.cache
+C:\Users\YOBA\Desktop\NoteApp-master\noteApp\obj\Debug\noteApp_MarkupCompile.lref
+C:\Users\YOBA\Desktop\NoteApp-master\noteApp\obj\Debug\MainWindow.baml
+C:\Users\YOBA\Desktop\NoteApp-master\noteApp\obj\Debug\SignInWindow.baml
+C:\Users\YOBA\Desktop\NoteApp-master\noteApp\obj\Debug\SignUpWindow.baml
+C:\Users\YOBA\Desktop\NoteApp-master\noteApp\obj\Debug\noteApp.g.resources
+C:\Users\YOBA\Desktop\NoteApp-master\noteApp\obj\Debug\noteApp.Properties.Resources.resources
+C:\Users\YOBA\Desktop\NoteApp-master\noteApp\obj\Debug\noteApp.csproj.GenerateResource.Cache
+C:\Users\YOBA\Desktop\NoteApp-master\noteApp\obj\Debug\noteApp.exe
+C:\Users\YOBA\Desktop\NoteApp-master\noteApp\obj\Debug\noteApp.pdb
