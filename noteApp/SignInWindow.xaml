@@ -5,21 +5,132 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:noteApp"
         mc:Ignorable="d"
-        Title="Log in" Height="220" Width="309" ResizeMode="CanMinimize">
+        Title="Log in" Height="220" Width="309" ResizeMode="CanMinimize" FontFamily="Caecilia LT Std Light">
     <Grid>
-        <Label Content="Login" HorizontalAlignment="Left" Margin="56,38,0,0" VerticalAlignment="Top" FontWeight="Bold" />
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="114,42,0,0" VerticalAlignment="Top" Width="158" Text="{Binding Path=Model.Login}">
+        <Label Content="Login" HorizontalAlignment="Left" Margin="56,38,0,0" 
+               VerticalAlignment="Top" FontWeight="Bold" Foreground="#FF4D4D4D" />
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="114,42,0,0" 
+                 VerticalAlignment="Top" Width="158" Text="{Binding Path=Model.Login}" 
+                 SelectionBrush="DarkCyan" Foreground="#FF4D4D4D" BorderThickness="0" Background="#FFD2E4E4">
             <TextBox.InputBindings>
-                <KeyBinding Key="Enter" Command="{Binding EnterCommand}" CommandParameter="{Binding ElementName=password}" />
+                <KeyBinding Key="Enter" Command="{Binding EnterCommand}" 
+                            CommandParameter="{Binding ElementName=password}" />
             </TextBox.InputBindings>
         </TextBox>
-        <Label Content="Password" HorizontalAlignment="Left" Margin="35,80,0,0" VerticalAlignment="Top" FontWeight="Bold" />
-        <PasswordBox HorizontalAlignment="Left" Height="23" Margin="114,83,0,0" VerticalAlignment="Top" Width="158" Name="password">
+        <Label Content="Password" HorizontalAlignment="Left" Margin="35,80,0,0" 
+               VerticalAlignment="Top" FontWeight="Bold" Foreground="#FF4D4D4D" />
+        <PasswordBox HorizontalAlignment="Left" Height="23" Margin="114,83,0,0" 
+                     VerticalAlignment="Top" Width="158" Name="password" 
+                     SelectionBrush="DarkCyan" Foreground="#FF4D4D4D" BorderThickness="0" Background="#FFD2E4E4">
             <PasswordBox.InputBindings>
-                <KeyBinding Key="Enter" Command="{Binding EnterCommand}" CommandParameter="{Binding ElementName=password}" />
+                <KeyBinding Key="Enter" Command="{Binding EnterCommand}" 
+                            CommandParameter="{Binding ElementName=password}" />
             </PasswordBox.InputBindings>
         </PasswordBox>
-        <Button Content="Enter" HorizontalAlignment="Left" Margin="114,132,0,0" VerticalAlignment="Top" Width="75" Command="{Binding EnterCommand}" CommandParameter="{Binding ElementName=password}" />
-        <Button Content="Register" HorizontalAlignment="Left" Margin="197,132,0,0" VerticalAlignment="Top" Width="75" Command="{Binding RegisterCommand}" />
+        <Button Content="Enter" HorizontalAlignment="Left" Margin="114,132,0,0" 
+                VerticalAlignment="Top" Height="30" Width="75" Command="{Binding EnterCommand}" 
+                CommandParameter="{Binding ElementName=password}" Foreground="White">
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Background" Value="DarkCyan"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <EventTrigger RoutedEvent="Button.MouseEnter">
+                            <EventTrigger.Actions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation 
+                                          AutoReverse="False" 
+                                          Duration="0:0:0.3" 
+                                          From="DarkCyan" To="#FF14A2A2"
+                                          AccelerationRatio="1" 
+                                          Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)"
+                                          FillBehavior="HoldEnd">
+                                        </ColorAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger.Actions>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="Button.MouseLeave">
+                            <EventTrigger.Actions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation 
+                                          AutoReverse="False" 
+                                          Duration="0:0:0.3" 
+                                          From="#FF14A2A2" To="DarkCyan"
+                                          AccelerationRatio="1" 
+                                          Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)"
+                                          FillBehavior="HoldEnd">
+                                        </ColorAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger.Actions>
+                        </EventTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+
+        </Button>
+        <Button Content="Register" HorizontalAlignment="Left" Margin="197,132,0,0" Foreground="White"
+                VerticalAlignment="Top" Height="30" Width="75" Command="{Binding RegisterCommand}">
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Background" Value="DarkCyan"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <EventTrigger RoutedEvent="Button.MouseEnter">
+                            <EventTrigger.Actions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation 
+                                          AutoReverse="False" 
+                                          Duration="0:0:0.5" 
+                                          From="DarkCyan" To="#FF14A2A2"
+                                          AccelerationRatio="1" 
+                                          Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)"
+                                          FillBehavior="HoldEnd">
+                                        </ColorAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger.Actions>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="Button.MouseLeave">
+                            <EventTrigger.Actions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation 
+                                          AutoReverse="False" 
+                                          Duration="0:0:0.5" 
+                                          From="#FF14A2A2" To="DarkCyan"
+                                          AccelerationRatio="1" 
+                                          Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)"
+                                          FillBehavior="HoldEnd">
+                                        </ColorAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger.Actions>
+                        </EventTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+
+        </Button>
     </Grid>
 </Window>

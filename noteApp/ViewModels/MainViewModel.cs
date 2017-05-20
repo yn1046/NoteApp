@@ -23,7 +23,7 @@ namespace noteApp.ViewModels
 
         public User CurrentUser { get; set; }
 
-        public bool IfResaved { get; set; }
+        public bool IfSaved { get; set; }
 
         private Note selectedNote;
         public Note SelectedNote
@@ -35,8 +35,8 @@ namespace noteApp.ViewModels
             set
             {
                 selectedNote = value;
-                if (!IfResaved) Select();
-                else IfResaved = false;
+                if (!IfSaved) Select();
+                else IfSaved = false;
                 OnPropertyChanged(nameof(SelectedNote));
                 OnPropertyChanged(nameof(IfCanSave));
             }
@@ -91,7 +91,7 @@ namespace noteApp.ViewModels
             CurrentUser = user;
             SaveCommand = new DelegateCommand(DoSave);
             NewCommand = new DelegateCommand(CreateNew);
-            IfResaved = false;
+            IfSaved = false;
             LoadNotes();
         }
 
@@ -109,7 +109,7 @@ namespace noteApp.ViewModels
                 tempList.ForEach(n => Model.UserNotes.Add(n));
                 Model.UserNotes.OrderBy(n => n.NoteDate);
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 MessageBox.Show(e.Message);
             }
@@ -123,35 +123,46 @@ namespace noteApp.ViewModels
 
         private void DoSave()
         {
-            if (string.IsNullOrEmpty(SelectedNote.Title))
+            try
             {
-                var note = new Note()
+                if (Model.Label.Length > 50) throw new Exception("Label length shouldn't exceed 50 characters");
+                if (Model.Text.Length > 3500) throw new Exception("Text length shouldn't exceed 3500 characters");
+                IfSaved = true;
+                if (string.IsNullOrEmpty(SelectedNote.Title))
                 {
-                    UserId = CurrentUser.Id,
-                    Title = Label,
-                    Text = Text,
-                    NoteDate = DateTime.Now
-                };
-                using (var db = new UserDbContext())
-                {
-                    db.Notes.Add(note);
-                    db.SaveChanges();
+                    var note = new Note()
+                    {
+                        UserId = CurrentUser.Id,
+                        Title = Label,
+                        Text = Text,
+                        NoteDate = DateTime.Now
+                    };
+                    using (var db = new UserDbContext())
+                    {
+                        db.Notes.Add(note);
+                        db.SaveChanges();
+                    }
+                    Model.UserNotes.Add(note);
                 }
-                Model.UserNotes.Add(note);
+                else
+                {
+                    using (var db = new UserDbContext())
+                    {
+                        var note = db.Notes.FirstOrDefault(n => n.Id == selectedNote.Id);
+                        note.Title = Label;
+                        note.Text = Text;
+                        note.NoteDate = DateTime.Now;
+                        db.SaveChanges();
+                    }
+                }
+                LoadNotes();
+                Label = string.Empty;
+                Text = string.Empty;
             }
-            else
+            catch (Exception e)
             {
-                IfResaved = true;
-                using (var db = new UserDbContext())
-                {
-                    var note = db.Notes.FirstOrDefault(n => n.Id == selectedNote.Id);
-                    note.Title = Label;
-                    note.Text = Text;
-                    note.NoteDate = DateTime.Now;
-                    db.SaveChanges();
-                }
+                MessageBox.Show(e.Message, "Error", MessageBoxButton.OK);
             }
-            LoadNotes();
         }
 
         private void CreateNew()

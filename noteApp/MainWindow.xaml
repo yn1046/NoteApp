@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:noteApp"
         mc:Ignorable="d"
-        Title="NotesApp" Height="350" Width="525">
+        Title="NotesApp" Height="449" Width="660" FontFamily="Caecilia LT Std Light">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="140" />
@@ -17,16 +17,219 @@
             <RowDefinition Height="50"/>
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <StackPanel Grid.Row="0" Grid.RowSpan="2" Grid.Column="0">
-            <Label>List of notes</Label>
-            <ListView ItemsSource="{Binding Model.UserNotes}" DisplayMemberPath="Title"  SelectedItem="{Binding SelectedNote}" />
-        </StackPanel>
-        <Button Grid.Column="2" Grid.Row="0" Command="{Binding SaveCommand}" IsEnabled="{Binding IfCanSave}">
-            <Image Source="pack://application:,,,/saveIcon.png" />
-        </Button>
-        <Button Grid.Column="3" Grid.Row="0" Content="New" FontSize="18" Command="{Binding NewCommand}" />
+        <Label Background="#FFD2E4E4" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" 
+               Content="List of notes" Grid.Row="0" Grid.Column="0"
+               BorderThickness="0" FontSize="18" Foreground="#FF4D4D4D" />
+        <ListView Grid.Column="0" Grid.Row="1" ItemsSource="{Binding Model.UserNotes}" SelectedItem="{Binding SelectedNote}" 
+                      BorderThickness="0" HorizontalContentAlignment="Stretch"
+                      ScrollViewer.HorizontalScrollBarVisibility="Disabled" Foreground="White">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <TextBlock Text="{Binding Title}" FontWeight="Bold" Margin="10,3,0,0" TextTrimming="WordEllipsis" />
+                        <TextBlock Grid.Row="1" TextAlignment="Right" Text="{Binding NoteDate, StringFormat=d, ConverterCulture=en-GB}" Margin="0,3,10,0" />
+                        <TextBlock Grid.Row="2" LineStackingStrategy="BlockLineHeight" 
+                                       LineHeight="16" MaxHeight="48" Text="{Binding Text}" 
+                                       Height="Auto" Margin="10,0,10,3" TextWrapping="Wrap" TextTrimming="WordEllipsis"/>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                    <Setter Property="Background" Value="DarkCyan"/>
+                    <Setter Property="Margin" Value="1"/>
 
-        <TextBox Grid.Row="0" Grid.Column="1" FontSize="25" FontWeight="Bold" Text="{Binding Label, UpdateSourceTrigger=PropertyChanged}" />
-        <TextBox Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" Text="{Binding Text, UpdateSourceTrigger=PropertyChanged}" />
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="ListViewItem">
+                                <Border Background="{TemplateBinding Background}">
+                                    <ContentPresenter />
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="Background" Value="#FF5FAEAE"/>
+                        </Trigger>
+                        <EventTrigger RoutedEvent="ListViewItem.MouseEnter">
+                            <EventTrigger.Actions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation 
+                                          AutoReverse="False" 
+                                          Duration="0:0:0.3" 
+                                          From="DarkCyan" To="#FF14A2A2"
+                                          AccelerationRatio="1" 
+                                          Storyboard.TargetProperty="(ListViewItem.Background).(SolidColorBrush.Color)"
+                                          FillBehavior="HoldEnd">
+                                        </ColorAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger.Actions>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="ListViewItem.MouseLeave">
+                            <EventTrigger.Actions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation 
+                                          AutoReverse="False" 
+                                          Duration="0:0:0.3" 
+                                          From="#FF14A2A2" To="DarkCyan"
+                                          AccelerationRatio="1" 
+                                          Storyboard.TargetProperty="(ListViewItem.Background).(SolidColorBrush.Color)"
+                                          FillBehavior="HoldEnd">
+                                        </ColorAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger.Actions>
+                        </EventTrigger>
+                    </Style.Triggers>
+                </Style>
+            </ListView.ItemContainerStyle>
+
+        </ListView>
+        <Button Grid.Column="2" Content="Save" FontSize="18" Foreground="White" Grid.Row="0" Command="{Binding SaveCommand}" IsEnabled="{Binding IfCanSave}">
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Background" Value="DarkCyan"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Background" Value="#FF326666"/>
+                            <Setter Property="Foreground" Value="#FF4D4D4D"/>
+                        </Trigger>
+                        <EventTrigger RoutedEvent="Button.MouseEnter">
+                            <EventTrigger.Actions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation 
+                                          AutoReverse="False" 
+                                          Duration="0:0:0.3" 
+                                          From="DarkCyan" To="#FF14A2A2"
+                                          AccelerationRatio="1" 
+                                          Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)"
+                                          FillBehavior="HoldEnd">
+                                        </ColorAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger.Actions>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="Button.MouseLeave">
+                            <EventTrigger.Actions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation 
+                                          AutoReverse="False" 
+                                          Duration="0:0:0.3" 
+                                          From="#FF14A2A2" To="DarkCyan"
+                                          AccelerationRatio="1" 
+                                          Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)"
+                                          FillBehavior="HoldEnd">
+                                        </ColorAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger.Actions>
+                        </EventTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <Button Grid.Column="3" Grid.Row="0" Content="New" FontSize="18" Foreground="White" Command="{Binding NewCommand}">
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Background" Value="DarkCyan"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <EventTrigger RoutedEvent="Button.MouseEnter">
+                            <EventTrigger.Actions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation 
+                                          AutoReverse="False" 
+                                          Duration="0:0:0.3" 
+                                          From="DarkCyan" To="#FF14A2A2"
+                                          AccelerationRatio="1" 
+                                          Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)"
+                                          FillBehavior="HoldEnd">
+                                        </ColorAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger.Actions>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="Button.MouseLeave">
+                            <EventTrigger.Actions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation 
+                                          AutoReverse="False" 
+                                          Duration="0:0:0.3" 
+                                          From="#FF14A2A2" To="DarkCyan"
+                                          AccelerationRatio="1" 
+                                          Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)"
+                                          FillBehavior="HoldEnd">
+                                        </ColorAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger.Actions>
+                        </EventTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+
+        </Button>
+
+        <Rectangle Grid.Row="0" Grid.Column="1" Fill="#FFD2E4E4" />
+        <TextBox Grid.Row="0" Grid.Column="1" FontSize="25"
+                 Text="{Binding Label, UpdateSourceTrigger=PropertyChanged}" 
+                 Foreground="DarkCyan" Background="Transparent" VerticalAlignment="Center"
+                 BorderThickness="0" SelectionBrush="DarkCyan" />
+        <TextBox Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" TextWrapping="Wrap"
+                 Text="{Binding Text, UpdateSourceTrigger=PropertyChanged}" BorderThickness="0" 
+                 Padding="10" SelectionBrush="DarkCyan" />
+        <Grid.Style>
+            <Style TargetType="{x:Type Grid}">
+                <Style.Triggers>
+                    <EventTrigger RoutedEvent="Grid.Loaded">
+                        <EventTrigger.Actions>
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation 
+                                          AutoReverse="False" 
+                                          Duration="0:0:1" 
+                                          Storyboard.TargetProperty="Opacity"
+                                          From="0" To="1"
+                                          AccelerationRatio="1" 
+                                          FillBehavior="HoldEnd">
+                                    </DoubleAnimation>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger.Actions>
+                    </EventTrigger>
+                </Style.Triggers>
+            </Style>
+        </Grid.Style>
     </Grid>
 </Window>
