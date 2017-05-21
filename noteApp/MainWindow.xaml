@@ -14,15 +14,17 @@
             <ColumnDefinition Width="50" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="50"/>
+            <RowDefinition Height="50" />
             <RowDefinition Height="*" />
+            <RowDefinition Height="40" />
         </Grid.RowDefinitions>
         <Label Background="#FFD2E4E4" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" 
                Content="List of notes" Grid.Row="0" Grid.Column="0"
                BorderThickness="0" FontSize="18" Foreground="#FF4D4D4D" />
         <ListView Grid.Column="0" Grid.Row="1" ItemsSource="{Binding Model.UserNotes}" SelectedItem="{Binding SelectedNote}" 
                       BorderThickness="0" HorizontalContentAlignment="Stretch"
-                      ScrollViewer.HorizontalScrollBarVisibility="Disabled" Foreground="White">
+                      ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Hidden" 
+                      Foreground="White" Background="#FFE2E2E2">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Grid>
@@ -149,6 +151,61 @@
                 </Style>
             </Button.Style>
         </Button>
+
+        <Button Grid.Column="0" Grid.Row="2" Content="Change user" FontSize="18" Foreground="White" Command="{Binding ChangeUserCommand}">
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Background" Value="DarkCyan"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Background" Value="#FF326666"/>
+                            <Setter Property="Foreground" Value="#FF4D4D4D"/>
+                        </Trigger>
+                        <EventTrigger RoutedEvent="Button.MouseEnter">
+                            <EventTrigger.Actions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation 
+                                          AutoReverse="False" 
+                                          Duration="0:0:0.3" 
+                                          From="DarkCyan" To="#FF14A2A2"
+                                          AccelerationRatio="1" 
+                                          Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)"
+                                          FillBehavior="HoldEnd">
+                                        </ColorAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger.Actions>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="Button.MouseLeave">
+                            <EventTrigger.Actions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation 
+                                          AutoReverse="False" 
+                                          Duration="0:0:0.3" 
+                                          From="#FF14A2A2" To="DarkCyan"
+                                          AccelerationRatio="1" 
+                                          Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)"
+                                          FillBehavior="HoldEnd">
+                                        </ColorAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger.Actions>
+                        </EventTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
         <Button Grid.Column="3" Grid.Row="0" Content="New" FontSize="18" Foreground="White" Command="{Binding NewCommand}">
             <Button.Style>
                 <Style TargetType="{x:Type Button}">
@@ -206,7 +263,7 @@
                  Text="{Binding Label, UpdateSourceTrigger=PropertyChanged}" 
                  Foreground="DarkCyan" Background="Transparent" VerticalAlignment="Center"
                  BorderThickness="0" SelectionBrush="DarkCyan" />
-        <TextBox Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" TextWrapping="Wrap"
+        <TextBox Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" Grid.RowSpan="2" TextWrapping="Wrap"
                  Text="{Binding Text, UpdateSourceTrigger=PropertyChanged}" BorderThickness="0" 
                  Padding="10" SelectionBrush="DarkCyan" />
         <Grid.Style>

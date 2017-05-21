@@ -18,6 +18,8 @@ namespace noteApp.ViewModels
 
         public ICommand SaveCommand { get; set; }
         public ICommand NewCommand { get; set; }
+        public ICommand CloseCommand { get; set; }
+        public ICommand ChangeUserCommand { get; set; }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -84,13 +86,15 @@ namespace noteApp.ViewModels
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        public MainViewModel(User user)
+        public MainViewModel(User user, Action closeAction)
         {
             Model = new Main();
             SelectedNote = new Note();
             CurrentUser = user;
             SaveCommand = new DelegateCommand(DoSave);
             NewCommand = new DelegateCommand(CreateNew);
+            CloseCommand = new DelegateCommand(closeAction);
+            ChangeUserCommand = new DelegateCommand(ChangeUser);
             IfSaved = false;
             LoadNotes();
         }
@@ -170,6 +174,13 @@ namespace noteApp.ViewModels
             SelectedNote = new Note();
             Label = string.Empty;
             Text = string.Empty;
+        }
+
+        private void ChangeUser()
+        {
+            var signInWindow = new SignInWindow();
+            signInWindow.Show();
+            CloseCommand.Execute(this);
         }
 
     }

@@ -24,7 +24,7 @@ namespace noteApp
         public MainWindow(User u)
         {
             InitializeComponent();
-            DataContext = new ViewModels.MainViewModel(u);
+            DataContext = new ViewModels.MainViewModel(u, Close);
         }
     }
 }
